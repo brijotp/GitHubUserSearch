@@ -14,8 +14,8 @@
   }
   
   .user-avatar {
-    width: 80px; /* Adjust avatar size as needed */
-    height: 80px; /* Adjust avatar size as needed */
+    width: 80px;
+    height: 80px; 
     overflow: hidden;
     border-radius: 50%;
   }
