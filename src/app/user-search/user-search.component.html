@@ -1,0 +1,7 @@
+   <form [formGroup]="searchForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Search GitHub Users</mat-label>
+      <input matInput formControlName="query" placeholder="Enter a keyword" (input)="onSubmit()">
+    </mat-form-field>
+  </form>
+  

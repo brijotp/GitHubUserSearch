@@ -1,0 +1,15 @@
+  <mat-grid-list cols="4" rowHeight="200px" gutterSize="10px">
+    <mat-grid-tile *ngFor="let user of users" [colspan]="1" [rowspan]="1">
+      <div class="user-card">
+        <div class="user-avatar">
+          <img [src]="user.avatar_url" alt="User avatar">
+        </div>
+        <div class="user-info">
+          <h3>{{ user.login }}</h3>
+          <a [href]="user.html_url" target="_blank">View Profile</a>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  
+  
