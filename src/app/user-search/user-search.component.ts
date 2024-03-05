@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Output, EventEmitter } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs/operators';
 
 @Component({
@@ -19,15 +19,13 @@ export class UserSearchComponent implements OnInit {
       query: new FormControl(''),
     });
 
-    this.querySubject.pipe(
-      debounceTime(500),
-      distinctUntilChanged(),
-      filter(query => query.trim().length > 0), 
-      switchMap(async (query) => {
-        this.queryChanged.emit(query);
-      })
-    ).subscribe();
-  }
+  this.querySubject.pipe(
+    debounceTime(500),
+    distinctUntilChanged(),
+    filter(query => query.trim().length > 0), 
+    switchMap(query => of(query)) // Using mapTo
+    ).subscribe(query => this.queryChanged.emit(query));
+}
 
   onSubmit(): void {
     this.querySubject.next(this.searchForm.value.query);
